@@ -2,19 +2,21 @@ var app = angular.module('MindSpaceApp', ['ngRoute']);
 
 app.config(function($routeProvider, $locationProvider){
   $routeProvider.when('/', {
-    templateUrl: 'views/index.html',
+    templateUrl: 'views/pages/home.html',
     controller: 'DefaultController as defaultCtrl'
   }).when('/login', {
     templateUrl: 'views/pages/login.html'
   }).when('/register',{
     templateUrl: 'views/pages/register.html'
     // controller: 'YellowController as yellowCtrl'
-  }).when('/home', {
-    templateUrl: 'views/pages/home.html'
+  // }).when('/home', {
+  //   templateUrl: 'views/pages/home.html'
   }).when('/search', {
     templateUrl: 'views/pages/search.html'
   }).when('/emergency', {
     templateUrl: 'views/pages/emergency.html'
+  }).when('/form', {
+    templateUrl: 'views/pages/form.html'
   });
   $locationProvider.html5Mode(true);
 });
