@@ -1,0 +1,23 @@
+{
+  "name": "solo-project",
+  "version": "1.0.0",
+  "description": "Mind;Space ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "baloghmathias@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "angular-chart.js": "^1.1.1",
+    "body-parser": "^1.16.1",
+    "bootstrap": "^3.3.7",
+    "chart.js": "^2.5.0",
+    "express": "^4.14.1",
+    "mongo": "^0.1.0",
+    "mongoose": "^4.8.2",
+    "node-schedule": "^1.2.0",
+    "path": "^0.12.7"
+  }
+}
