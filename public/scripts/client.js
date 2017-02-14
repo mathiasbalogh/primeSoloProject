@@ -9,12 +9,13 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider){
   }).when('/home', {
     templateUrl: 'views/pages/home.html'
   }).when('/search', {
-    templateUrl: 'views/pages/search.html'
+    templateUrl: 'views/pages/search.html',
+    controller: 'FormController as form'
   }).when('/emergency', {
     templateUrl: 'views/pages/emergency.html'
   }).when('/form', {
     templateUrl: 'views/pages/form.html',
-    controller: 'FormController'
+    controller: 'FormController as form'
   });
   $locationProvider.html5Mode(true);
 });

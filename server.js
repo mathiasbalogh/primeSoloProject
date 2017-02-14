@@ -9,6 +9,7 @@ var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
 var private = require('./routes/private/index');
 var database = require('./utils/database');
+var form = require('./routes/forms');
 
 var mongoose = require('mongoose');
 
@@ -35,6 +36,7 @@ app.use(passport.session());
 app.use('/auth', auth);
 app.use('/private', isLoggedIn, private);
 app.use('/', index);
+app.use('/form', form);
 // mongoose.connect('mongodb://localhost:27017/MindSpace');
 // var db= mongoose.connection;
 //
