@@ -7,8 +7,16 @@
   <body>
     <header><a href="/home">home</a></header>
     <main>
-      <input type="text" ng-model="form.searchQuery"></input>
-      <button ng-click="form.searchForms(form.searchQuery)">Search</button>
+      <label for="searchType">What would you like to search by?</label>
+      <select name="searchType" ng-model="form.searchType" ng-change="form.updateType()">
+        <option value="1">Date</option>
+        <option value="2">Keyword</option>
+        <option value="3">Month</option>
+        <option value="4">Rating</option>
+        <option value="5">Timespan</option>
+      </select>
+      <input type="text" ng-model="form.searchQuery" placeholder="{{form.placeHolder}}"></input>
+      <button ng-click="form.searchForms(form.searchType, form.searchQuery)">Search</button>
     </main>
 
   </body>
