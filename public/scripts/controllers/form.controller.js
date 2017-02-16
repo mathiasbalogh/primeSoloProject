@@ -20,7 +20,7 @@ app.controller('FormController', function(FormService){
         form.placeHolder = "1-10"
         break;
       case '5': //timespan
-        form.placeHolder = "Month Year-Month Year";
+        form.placeHolder = "Month-Month";
         break;
       default:
         form.placeHolder = "Choose a search type."

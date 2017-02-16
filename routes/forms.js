@@ -6,7 +6,6 @@ var bodyParser = require('body-parser');
 
 
 
-
 router.post('/', function (req, res) {
 req.body.userId = req.user.id;
 req.body.date = (new Date).toISOString().substr(0,10);
@@ -58,44 +57,9 @@ router.get('/:type:q', function (req, res) {
     case '3': //month
       console.log(req.params.q);
       var mo = req.params.q;
-      switch(mo){
-        case 'January'||'january':
-        mo = 0;
-        break;
-        case 'February'||'february':
-        mo = 1;
-        break;
-        case 'March'||'march':
-        mo = 2;
-        break;
-        case 'April'||'april':
-        mo = 3;
-        break;
-        case 'May'||'may':
-        mo = 4;
-        break;
-        case 'June'||'june':
-        mo = 5;
-        break;
-        case 'July'||'july':
-        mo = 6;
-        break;
-        case 'August'||'august':
-        mo = 7;
-        break;
-        case 'September'||'september':
-        mo = 8;
-        break;
-        case 'October'||'october':
-        mo = 9;
-        break;
-        case 'November'||'november':
-        mo = 10;
-        break;
-        case 'December'||'december':
-        mo = 11;
-        break;
-      }
+      month = mo.toLowerCase();
+      var monthArray=['january','february','march','april','may','june','july','august','september','october','november','december'];
+      mo = monthArray.indexOf(month);
       Form.find({'userId':req.user.id, 'month':mo}, function(err, forms){
         if(err){
           res.sendStatus(500);
@@ -116,7 +80,15 @@ router.get('/:type:q', function (req, res) {
       break;
     case '5': //timespan
       console.log(req.params.q);
-      Form.find({'userId':req.user.id}, function(err, forms){
+      var q = req.params.q;
+      var queryArray = q.split('-');
+      var gte = queryArray[0].toLowerCase();
+      var lt = queryArray[1].toLowerCase();
+      var monthArray=['january','february','march','april','may','june','july','august','september','october','november','december'];
+      gte = monthArray.indexOf(gte);
+      lt = monthArray.indexOf(lt);
+      console.log(gte, lt);
+      Form.find({'userId':req.user.id, 'month': {'$gte': gte, '$lt': lt}}, function(err, forms){
         if(err){
           res.sendStatus(500);
           return;
