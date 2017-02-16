@@ -7,6 +7,10 @@
   <body>
     <main>
       <h1>Mind;Space</h1>
+      <canvas id="line" class="chart chart-line" chart-data="ctrl.data"
+        chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options"
+        chart-dataset-override="ctrl.datasetOverride" chart-click="ctrl.onClick">
+      </canvas>
       <button class="btn-info"><a href="/form">Today's Questionnaire</a></button>
       <button class="btn-info"><a href="/search">Search Past</a></button>
       <button class="btn-danger"><a href="/emergency">Emergency!</a></button>

@@ -21,6 +21,16 @@ req.body.date = (new Date).toISOString().substr(0,10);
   });
 });
 
+router.get('/chart', function (req, res) {
+  Form.find({'userId':req.user.id}, function(err, forms){
+    if(err){
+      res.sendStatus(500);
+      return;
+    }
+    res.send(forms);
+  }).sort( { date: 1 } );
+});
+
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/:type:q', function (req, res) {
@@ -92,16 +102,12 @@ router.get('/:type:q', function (req, res) {
         res.send(forms);
       });
       break;
-  }
-  // Form.find({'userId':req.user.id}, function(err, forms){
-  //   if(err){
-  //     res.sendStatus(500);
-  //     return;
-  //   }
-  //   res.send(forms);
-  // });
+    }
+  });
 
-});
+
+
+
 
 
 module.exports = router;
