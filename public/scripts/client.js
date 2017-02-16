@@ -37,6 +37,7 @@ app.controller('DefaultController', function(DefaultService){
     DefaultService.getChartData().then(function(res){
       var responseArray = res.data;
       responseArray= responseArray.slice(0,10)
+      responseArray = responseArray.reverse();
       responseArray.forEach(function(i){
         var date = new Date(i.date);
         date = date.toISOString().substr(0,10);

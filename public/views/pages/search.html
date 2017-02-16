@@ -17,6 +17,11 @@
       </select>
       <input type="text" ng-model="form.searchQuery" placeholder="{{form.placeHolder}}"></input>
       <button ng-click="form.searchForms(form.searchType, form.searchQuery)">Search</button>
+      <ul ng-repeat="form in form.formArray">
+        <li>{{form.rating}}</li>
+        <li>{{form.entry}}</li>
+        <li>{{form.date}}</li>
+      </ul>
     </main>
 
   </body>

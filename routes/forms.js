@@ -28,7 +28,7 @@ router.get('/chart', function (req, res) {
       return;
     }
     res.send(forms);
-  }).sort( { date: 1 } );
+  }).sort( { date: -1 } );
 });
 
 router.use(bodyParser.urlencoded({extended: true}));

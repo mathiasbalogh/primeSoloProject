@@ -1,9 +1,10 @@
-app.controller('FormController', function(FormService){
+app.controller('FormController', function(FormService, $location){
     console.log('FormController is loaded');
 
   var form=this;
   form.searchType = 0;
   form.placeHolder = "Choose a search type."
+  form.formArray=[];
 
   form.updateType = function(){
     switch (form.searchType) {
@@ -29,12 +30,14 @@ app.controller('FormController', function(FormService){
   form.submitForm = function(){
     FormService.submitForm(form.todaysMood, form.todaysEntry).then(function(){
       console.log('this is form data', form.todaysMood, form.todaysEntry);
+      $location.path('/home');
     });
   }
 
   form.searchForms = function(searchType, searchQuery){
     FormService.searchForms(searchType, searchQuery).then(function(res){
       console.log('these are the forms your requested', res);
+      form.formArray = res.data;
     });
   }
 });
