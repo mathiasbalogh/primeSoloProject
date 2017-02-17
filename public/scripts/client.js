@@ -5,7 +5,8 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider, Char
     templateUrl: 'views/templates/login.html',
     controller: 'LoginController as login'
   }).when('/register',{
-    templateUrl: 'views/pages/register.html'
+    templateUrl: 'views/pages/register.html',
+    controller: 'RegisterController as reg'
   }).when('/home', {
     templateUrl: 'views/pages/home.html',
     controller: 'DefaultController as ctrl'
@@ -26,12 +27,28 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider, Char
 
 app.controller('LoginController', function(){});
 
-app.controller('DefaultController', function(DefaultService){
+app.controller('DefaultController', function(DefaultService, $location){
   console.log('DefaultController is loaded');
 
   var ctrl=this;
 
+  ctrl.checkRegistration = function(){
+    DefaultService.checkRegistration().then(function(res){
+      var user = res[0];
+      var nullCheck = true;
+      user.emergency.contacts.forEach(function(i){
+        if(i.name == null || i.phoneNumber == null){
+          nullCheck = false;
+        }
+      });
+      if(user.emergency.message == null || nullCheck == false){
+        console.log(user);
+        $location.path('/register');
+      }
+    });
+  }
 
+  ctrl.checkRegistration();
 
   ctrl.getChartData = function(){
     DefaultService.getChartData().then(function(res){

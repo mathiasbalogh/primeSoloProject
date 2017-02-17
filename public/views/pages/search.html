@@ -5,7 +5,7 @@
     <title></title>
   </head>
   <body>
-    <header><a href="/home">home</a></header>
+    <header><button class="btn btn-info"><a href="/home">home</a></button></header>
     <main>
       <label for="searchType">What would you like to search by?</label>
       <select name="searchType" ng-model="form.searchType" ng-change="form.updateType()">
@@ -16,7 +16,7 @@
         <option value="5">Timespan</option>
       </select>
       <input type="text" ng-model="form.searchQuery" placeholder="{{form.placeHolder}}"></input>
-      <button ng-click="form.searchForms(form.searchType, form.searchQuery)">Search</button>
+      <button class="btn btn-primary" ng-click="form.searchForms(form.searchType, form.searchQuery)">Search</button>
       <ul ng-repeat="form in form.formArray">
         <li>{{form.rating}}</li>
         <li>{{form.entry}}</li>

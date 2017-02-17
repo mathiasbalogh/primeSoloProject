@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var Form = require('../models/forms');
+var User = require('../models/user');
 var bodyParser = require('body-parser');
 
 
@@ -21,7 +22,7 @@ req.body.date = (new Date).toISOString().substr(0,10);
   });
 });
 
-router.get('/chart', function (req, res) {
+router.get('/chart', function (req, res) { //pull form info for chart
   Form.find({'userId':req.user.id}, function(err, forms){
     if(err){
       res.sendStatus(500);
@@ -29,6 +30,40 @@ router.get('/chart', function (req, res) {
     }
     res.send(forms);
   }).sort( { date: -1 } );
+});
+
+router.get('/user', function (req, res) { //pull user info to check if registration fields are complete
+  User.find({_id:req.user.id}, function(err, user){
+    if(err){
+      res.sendStatus(500);
+      return;
+    }
+    res.send(user);
+  });
+});
+
+router.put('/user', function (req, res) { //add first emergency contact
+  console.log(req.body);
+  User.update({_id:req.user.id},{$set:{"emergency.contacts.0.name": req.body.name, "emergency.contacts.0.phoneNumber": req.body.phone}}, function(err){
+    if(err){
+      res.sendStatus(500);
+      return;
+    }
+    console.log('updated');
+    res.sendStatus(204);
+  });
+});
+
+router.put('/usermessage', function (req, res) { //add emergency message
+  console.log(req.body);
+  User.update({_id:req.user.id},{$set:{"emergency.message": req.body.message}}, function(err){
+    if(err){
+      res.sendStatus(500);
+      return;
+    }
+    console.log('updated');
+    res.sendStatus(204);
+  });
 });
 
 router.use(bodyParser.urlencoded({extended: true}));
@@ -90,11 +125,11 @@ router.get('/:type:q', function (req, res) {
       var q = query;
       var queryArray = q.split('-');
       var gte = queryArray[0].toLowerCase();
-      var lt = queryArray[1].toLowerCase();
+      var lte = queryArray[1].toLowerCase();
       var monthArray=['january','february','march','april','may','june','july','august','september','october','november','december'];
       gte = monthArray.indexOf(gte);
-      lt = monthArray.indexOf(lt);
-      Form.find({'userId':id, 'month': {'$gte': gte, '$lt': lt}}, function(err, forms){
+      lte = monthArray.indexOf(lt);
+      Form.find({'userId':id, 'month': {'$gte': gte, '$lte': lte}}, function(err, forms){
         if(err){
           res.sendStatus(500);
           return;

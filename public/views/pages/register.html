@@ -6,18 +6,23 @@
   </head>
   <body>
     <main>
+      <button class="btn btn-info"><a href="/home"><img src="../images/home2.png"/></a></button>
       <form>
         <label>Add an emergency contact:</label>
-        <input type="text" placeholder="Contact Name"></input>
-        <input type="number" placeholder="Phone number xxxxxxxxxx"></input>
-        <input type="submit" ng-click=""></input>
+        <input type="text" placeholder="Contact Name" ng-model="reg.contactName"></input>
+        <input type="number" placeholder="Phone # xxxxxxxxxx" ng-model="reg.contactPhone"></input>
+        <input class="btn btn-success" type="submit" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)"></input>
       </form>
       <form>
         <label>What would you like your emergency message to be?</label>
-        <input type="text" placeholder="This message will be sent to your contacts"></input>
-        <input type="submit"></input>
+        <input type="text" placeholder="This message will be sent to your contacts" ng-model="reg.emergencyMessage"></input>
+        <input class="btn btn-success" type="submit" ng-click="reg.submitMessage(reg.emergencyMessage)"></input>
       </form>
-      
+      <ul>
+        <li>
+      </ul>
+      <p>{{reg.message}}</p>
+
     </main>
   </body>
 </html>

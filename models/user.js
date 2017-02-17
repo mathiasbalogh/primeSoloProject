@@ -11,7 +11,7 @@ var userSchema = mongoose.Schema({
   googleEmail: String,
   googleName: String,
   emergency:{
-    contacts:[{name:String, phoneNumber:Number}],
+    contacts:[{name:String, phoneNumber:String}],
     message: String
   }
 });
