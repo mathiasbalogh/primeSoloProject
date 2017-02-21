@@ -5,15 +5,14 @@
  */
 var mongoose = require('mongoose');
 
+
 var userSchema = mongoose.Schema({
   googleId: String,
   googleToken: String,
   googleEmail: String,
   googleName: String,
-  emergency:{
-    contacts:[{name:String, phoneNumber:String}],
-    message: String
-  }
+  emergency: Array,
+  message: String
 });
 
 

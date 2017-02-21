@@ -4,7 +4,8 @@ var path = require('path');
 var Form = require('../models/forms');
 var User = require('../models/user');
 var bodyParser = require('body-parser');
-
+var Contact = require('../models/contact');
+var objectId = require('mongoose').Schema.Types.ObjectId;
 
 
 router.post('/', function (req, res) {
@@ -44,7 +45,9 @@ router.get('/user', function (req, res) { //pull user info to check if registrat
 
 router.put('/user', function (req, res) { //add first emergency contact
   console.log(req.body);
-  User.update({_id:req.user.id},{$set:{"emergency.contacts.0.name": req.body.name, "emergency.contacts.0.phoneNumber": req.body.phone}}, function(err){
+  req.body.phone = "+1"+req.body.phone;
+  User.update({_id:req.user.id},{$push: {"emergency": new Contact(req.body)}},
+  {safe: true, upsert: true, new : true}, function(err){
     if(err){
       res.sendStatus(500);
       return;
@@ -56,7 +59,7 @@ router.put('/user', function (req, res) { //add first emergency contact
 
 router.put('/usermessage', function (req, res) { //add emergency message
   console.log(req.body);
-  User.update({_id:req.user.id},{$set:{"emergency.message": req.body.message}}, function(err){
+  User.update({_id:req.user.id},{$set:{"message": req.body.message}}, function(err){
     if(err){
       res.sendStatus(500);
       return;
@@ -67,6 +70,18 @@ router.put('/usermessage', function (req, res) { //add emergency message
 });
 
 router.use(bodyParser.urlencoded({extended: true}));
+
+router.delete('/:phone', function(req, res){ //delete an emergency contact
+  User.findByIdAndUpdate(req.user.id, {$pull: {emergency: {"phone": req.params.phone}}},{safe:true, new:true}, function(err, doc){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }else{
+      console.log("success", doc);
+      res.sendStatus(204);
+    }
+  });
+});
 
 router.get('/:type:q', function (req, res) {
   console.log('this is the req params q', req.params.q);

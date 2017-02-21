@@ -3,27 +3,40 @@ app.controller('RegisterController', function(RegisterService, DefaultService, $
 
 var reg = this;
 
-reg.getContactsAndMessage = function(){
-
+reg.removeContact = function(contactPhone){
+  RegisterService.removeContact(contactPhone).then(function(){
+    console.log('success');
+  });
 }
 
-reg.checkRegistration = function(){
+reg.getContactsAndMessage = function(){
+  return DefaultService.checkRegistration().then(function(res){
+    var user = res[0];
+    reg.contactsArray = user.emergency;
+    reg.message = user.message;
+  });
+}
+
+reg.getContactsAndMessage();
+
+reg.checkRegistration = function(){ //checks if user if fully registered
   return DefaultService.checkRegistration().then(function(res){
     var user = res[0];
     var nullCheck = false;
-    contactArray = user.emergency.contacts
+    var contactArray = user.emergency;
     console.log(contactArray);
-    contactArray.forEach(function(i){
-      console.log(i.name, i.phoneNumber);
-      if(i.name == null || i.phoneNumber == null){
-        nullCheck = false;
-      }else{
-        nullCheck = true;
-      }
-    });
-    console.log(user.emergency.message);
-    if(user.emergency.message == null || nullCheck == false){
-      console.log(user);
+    if(contactArray == null){
+      return nullCheck;
+    }else{
+      contactArray.forEach(function(i){
+        if(i.name == null || i.phone == null){
+          nullCheck = false;
+        }else{
+          nullCheck = true;
+        }
+      });
+    }
+    if(user.message == null || nullCheck == false){
       return nullCheck;
     }else {
       nullCheck = true;
@@ -38,7 +51,6 @@ reg.submitContact = function(contactName, contactPhone){
   RegisterService.submitContact(contactName, contactPhone).then(function(){
     console.log('success');
       reg.checkRegistration().then(function(res){
-        console.log(res);
       if(res == true){
         $location.path('/home');
       }else {
@@ -52,7 +64,6 @@ reg.submitMessage = function(emergencyMessage){
   RegisterService.submitMessage(emergencyMessage).then(function(){
     console.log('success');
       reg.checkRegistration().then(function(res){
-        console.log(res);
       if(res == true){
         $location.path('/home');
       }else {
@@ -61,6 +72,7 @@ reg.submitMessage = function(emergencyMessage){
     });
   });
 }
+
 
 
 

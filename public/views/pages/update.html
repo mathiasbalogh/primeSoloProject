@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <header>
+      <button class="btn btn-info"><a href="/home"><img src="../images/home2.png"/></a></button>
+    </header>
+    <h2>Update your emergency contacts or message</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Emergency Contact(s):</th>
+        </tr>
+      </thead>
+      <tr ng-repeat="contact in reg.contactsArray">
+        <td id="{{contact._id}}">{{contact.name}}: {{contact.phone}}</td>
+      </tr>
+    </table>
+    <label for="emergencyMessage">Emergency Message:</label>
+    <p>{{reg.message}}</p>
+    <input name="emergencyMessage" type="text" placeholder="Update your message" ng-model="reg.emergencyMessage"></input>
+    <input class="btn btn-success" type="submit" ng-click="reg.submitMessage(reg.emergencyMessage)"></input>
+  </body>
+</html>

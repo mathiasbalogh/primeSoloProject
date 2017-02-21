@@ -5,7 +5,6 @@
     <title>Today's Questionnaire</title>
   </head>
   <body>
-    <main>
       <form>
         <h3>On a scale of 1-10, how do you feel today?</h3>
         <select ng-model="form.todaysMood">
@@ -22,9 +21,8 @@
         </select>
         <h4>Is there anything else you'd like to note about today?</h4>
         <input type="text-area" ng-model="form.todaysEntry"></input>
-        <input class="btn btn-success" type="submit" ng-click="form.submitForm()"></input>
+        <button class="btn btn-success" ng-click="form.submitForm()"><span class="glyphicon glyphicon-save"></span></button>
       </form>
-      <button class="btn btn-info"><a href="/home">cancel</a></button>
-    </main>
+      <button class="btn btn-danger"><a href="/home"><span class="glyphicon glyphicon-remove"></span></a></button>
   </body>
 </html>

@@ -12,7 +12,7 @@ app.service('RegisterService', function ($http) {
       console.log('Success');
       return response;
     }).catch(function(err){
-      console.log('Error getting data from server', err);
+      console.log('Error updating data on server', err);
     });
   }
 
@@ -27,7 +27,19 @@ app.service('RegisterService', function ($http) {
       console.log('Success');
       return response;
     }).catch(function(err){
-      console.log('Error getting data from server', err);
+      console.log('Error updating data on server', err);
+    });
+  }
+
+  this.removeContact = function(phone){
+    return $http({
+      method: 'DELETE',
+      url:'/form/'+phone
+    }).then(function(response){
+      console.log('Success');
+      return response;
+    }).catch(function(err){
+      console.log('Error deleting from server', err);
     });
   }
 

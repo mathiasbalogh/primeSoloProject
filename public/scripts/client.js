@@ -1,4 +1,4 @@
-var app = angular.module('MindSpaceApp', ['ngRoute','chart.js']);
+var app = angular.module('MindSpaceApp', ['ngRoute','chart.js',]);
 
 app.config(function($routeProvider, $locationProvider, $controllerProvider, ChartJsProvider){
   $routeProvider.when('/', {
@@ -14,10 +14,14 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider, Char
     templateUrl: 'views/pages/search.html',
     controller: 'FormController as form'
   }).when('/emergency', {
-    templateUrl: 'views/pages/emergency.html'
+    templateUrl: 'views/pages/emergency.html',
+    controller: 'EmergencyController as emergency'
   }).when('/form', {
     templateUrl: 'views/pages/form.html',
     controller: 'FormController as form'
+  }).when('/update',{
+    templateUrl: 'views/pages/update.html',
+    controller: 'RegisterController as reg'
   });
   $locationProvider.html5Mode(true);
   // ChartJsProvider.setOptions({
@@ -36,12 +40,17 @@ app.controller('DefaultController', function(DefaultService, $location){
     DefaultService.checkRegistration().then(function(res){
       var user = res[0];
       var nullCheck = true;
-      user.emergency.contacts.forEach(function(i){
-        if(i.name == null || i.phoneNumber == null){
-          nullCheck = false;
-        }
-      });
-      if(user.emergency.message == null || nullCheck == false){
+      var contactArray = user.emergency;
+      if(contactArray == undefined || contactArray == null){
+        nullCheck = false;
+      }else{
+        contactArray.forEach(function(i){
+          if(i.name == null || i.phone == null){
+            nullCheck = false;
+          }
+        });
+      }
+      if(user.message == null || nullCheck == false){
         console.log(user);
         $location.path('/register');
       }

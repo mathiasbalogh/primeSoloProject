@@ -5,24 +5,26 @@
     <title></title>
   </head>
   <body>
-    <main>
-      <button class="btn btn-info"><a href="/home"><img src="../images/home2.png"/></a></button>
+      <button class="btn btn-info"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
       <form>
         <label>Add an emergency contact:</label>
-        <input type="text" placeholder="Contact Name" ng-model="reg.contactName"></input>
-        <input type="number" placeholder="Phone # xxxxxxxxxx" ng-model="reg.contactPhone"></input>
-        <input class="btn btn-success" type="submit" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)"></input>
+        <input type="text" class="form-control" placeholder="Contact Name" ng-model="reg.contactName"></input>
+        <input type="number" class="form-control" placeholder="Phone # xxxxxxxxxx" ng-model="reg.contactPhone"></input>
+        <button class="btn btn-success" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)"><span class="glyphicon glyphicon-save"></span></button>
       </form>
-      <form>
-        <label>What would you like your emergency message to be?</label>
-        <input type="text" placeholder="This message will be sent to your contacts" ng-model="reg.emergencyMessage"></input>
-        <input class="btn btn-success" type="submit" ng-click="reg.submitMessage(reg.emergencyMessage)"></input>
-      </form>
-      <ul>
-        <li>
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Emergency Contact(s):</th>
+          </tr>
+        </thead>
+        <tr ng-repeat="contact in reg.contactsArray">
+          <td id="{{contact._id}}">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-danger" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></td>
+        </tr>
+      </table>
+      <input name="emergencyMessage" class="form-control" type="text" placeholder="Add or update your message" ng-model="reg.emergencyMessage"></input>
+      <button class="btn btn-success" ng-click="reg.submitMessage(reg.emergencyMessage)"><span class="glyphicon glyphicon-save"></span></button><br>
+      <label for="emergencyMessage">Emergency Message:</label>
       <p>{{reg.message}}</p>
-
-    </main>
   </body>
 </html>
