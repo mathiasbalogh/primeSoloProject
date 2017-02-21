@@ -46,4 +46,7 @@ graph.displayChart= function(){
 
 graph.displayChart();
 
+graph.refreshGraph = function(fromDate, toDate){
+
+}
 });

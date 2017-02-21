@@ -12,6 +12,11 @@
         chart-labels="graph.labels" chart-series="graph.series" chart-options="graph.options"
         chart-dataset-override="graph.datasetOverride" chart-click="graph.onClick">
       </canvas>
+      <label for="fromDate">From:</label>
+      <input name="fromDate" type="date" ng-model="graph.fromDate"></input>
+      <label for="toDate">To:</label>
+      <input name="toDate" type="date" ng-model="graph.toDate"></input>
+      <button ng-click="graph.refreshGraph(graph.fromDate, graph.toDate)" class="btn btn-primary"><span class="glyphicon glyphicon-refresh"></span></button>
     </main>
   </body>
 </html>

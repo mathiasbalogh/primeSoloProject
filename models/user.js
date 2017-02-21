@@ -5,13 +5,14 @@
  */
 var mongoose = require('mongoose');
 
+var contactSchema = require('./contact.js').schema;
 
 var userSchema = mongoose.Schema({
   googleId: String,
   googleToken: String,
   googleEmail: String,
   googleName: String,
-  emergency: Array,
+  emergency: [contactSchema],
   message: String
 });
 

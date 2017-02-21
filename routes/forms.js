@@ -43,17 +43,29 @@ router.get('/user', function (req, res) { //pull user info to check if registrat
   });
 });
 
-router.put('/user', function (req, res) { //add first emergency contact
+router.put('/user', function (req, res) { //add emergency contact
   console.log(req.body);
   req.body.phone = "+1"+req.body.phone;
-  User.update({_id:req.user.id},{$push: {"emergency": new Contact(req.body)}},
-  {safe: true, upsert: true, new : true}, function(err){
-    if(err){
-      res.sendStatus(500);
-      return;
-    }
-    console.log('updated');
-    res.sendStatus(204);
+  // User.update({_id:req.user.id},{$push: {"emergency": new Contact(req.body)}},
+  // {safe: true, upsert: true, new : true}, function(err){
+  //   if(err){
+  //     res.sendStatus(500);
+  //     return;
+  //   }
+  //   console.log('updated');
+  //   res.sendStatus(204);
+  // });
+  User.find({"_id":req.user.id}, function(err, blah){
+    console.log('this is the user', blah);
+    blah[0].emergency.push(req.body);
+    blah[0].save(function(err){
+      if(err){
+        res.sendStatus(500);
+        return;
+      }
+      console.log('updated');
+      res.sendStatus(204);
+    });
   });
 });
 
@@ -71,18 +83,21 @@ router.put('/usermessage', function (req, res) { //add emergency message
 
 router.put('/contactUpdate', function(req, res){ //update an emergency contact
   var phone = "+1"+req.body.phone;
-  console.log(req.body);
   var user = req.user.id;
-  res.sendStatus(200);
-  // User.update({_id = user}, {$set: {"emergency.$.name":req.body.name, "emergency.$.phone": phone}}, function(err, user){
-  //   if(err){
-  //     console.log(err);
-  //     res.sendStatus(500);
-  //   }else{
-  //     console.log("success", user);
-  //     res.sendStatus(204);
-  //   }
-  // });
+  User.find({"_id": user }, function(err, user){
+    var emergencyContact = user[0].emergency.id(req.body._id);
+    emergencyContact.name = req.body.name;
+    emergencyContact.phone = phone;
+    user[0].save(function(err){
+      if(err){
+        console.log(err);
+        res.sendStatus(500);
+      }else{
+        console.log("success", user);
+        res.sendStatus(204);
+      }
+    });
+  });
 });
 
 router.use(bodyParser.urlencoded({extended: true}));
