@@ -43,4 +43,21 @@ app.service('RegisterService', function ($http) {
     });
   }
 
+  this.submitUpdate = function(id, name, phone){
+    return $http({
+      method: 'PUT',
+      url: '/form/contactUpdate',
+      data:{
+        _id: id,
+        name: name,
+        phone: phone
+      }
+    }).then(function(response){
+      console.log('Success');
+      return response;
+    }).catch(function(err){
+      console.log('Error updating data on server', err);
+    });
+  }
+
 });

@@ -6,6 +6,10 @@ app.controller('FormController', function(FormService, $location){
   form.placeHolder = "Choose a search type."
   form.formArray=[];
 
+  form.goToHome = function(){
+    $location.path('/home');
+  }
+
   form.updateType = function(){
     switch (form.searchType) {
       case '1': //date

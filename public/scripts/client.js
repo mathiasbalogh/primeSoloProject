@@ -22,6 +22,9 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider, Char
   }).when('/update',{
     templateUrl: 'views/pages/update.html',
     controller: 'RegisterController as reg'
+  }).when('/graph', {
+    templateUrl: 'views/pages/graph.html',
+    controller: 'GraphController as graph'
   });
   $locationProvider.html5Mode(true);
   // ChartJsProvider.setOptions({
@@ -35,6 +38,13 @@ app.controller('DefaultController', function(DefaultService, $location){
   console.log('DefaultController is loaded');
 
   var ctrl=this;
+
+  ctrl.goToForm = function(){
+    $location.path('/form');
+  }
+  ctrl.goToEmergency = function(){
+    $location.path('/emergency');
+  }
 
   ctrl.checkRegistration = function(){
     DefaultService.checkRegistration().then(function(res){

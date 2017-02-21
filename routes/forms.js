@@ -69,6 +69,22 @@ router.put('/usermessage', function (req, res) { //add emergency message
   });
 });
 
+router.put('/contactUpdate', function(req, res){ //update an emergency contact
+  var phone = "+1"+req.body.phone;
+  console.log(req.body);
+  var user = req.user.id;
+  res.sendStatus(200);
+  // User.update({_id = user}, {$set: {"emergency.$.name":req.body.name, "emergency.$.phone": phone}}, function(err, user){
+  //   if(err){
+  //     console.log(err);
+  //     res.sendStatus(500);
+  //   }else{
+  //     console.log("success", user);
+  //     res.sendStatus(204);
+  //   }
+  // });
+});
+
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.delete('/:phone', function(req, res){ //delete an emergency contact

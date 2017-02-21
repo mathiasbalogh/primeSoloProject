@@ -19,7 +19,8 @@
           </tr>
         </thead>
         <tr ng-repeat="contact in reg.contactsArray">
-          <td id="{{contact._id}}">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-danger" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></td>
+          <td id="{{contact._id}}"><p ng-show="reg.showP">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary" ng-click="reg.updateContact()"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-danger" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></p>
+          <input ng-show="reg.showInput" type="text" ng-model="contact.name"></input><input ng-show="reg.showInput" type="number" ng-model="contact.phone"></input><button ng-show="reg.showInput" class="btn btn-success" ng-click="reg.submitUpdate(contact._id, contact.name, contact.phone)"><span class="glyphicon glyphicon-save"></span></button><button ng-show="reg.showInput" class="btn btn-danger" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></td>
         </tr>
       </table>
       <input name="emergencyMessage" class="form-control" type="text" placeholder="Add or update your message" ng-model="reg.emergencyMessage"></input>

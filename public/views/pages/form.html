@@ -6,6 +6,7 @@
   </head>
   <body>
       <form>
+        <button class="btn btn-danger" ng-click="form.goToHome()"><span class="glyphicon glyphicon-remove"></span></button>
         <h3>On a scale of 1-10, how do you feel today?</h3>
         <select ng-model="form.todaysMood">
           <option value=1>1</option>
@@ -23,6 +24,5 @@
         <input type="text-area" ng-model="form.todaysEntry"></input>
         <button class="btn btn-success" ng-click="form.submitForm()"><span class="glyphicon glyphicon-save"></span></button>
       </form>
-      <button class="btn btn-danger"><a href="/home"><span class="glyphicon glyphicon-remove"></span></a></button>
   </body>
 </html>

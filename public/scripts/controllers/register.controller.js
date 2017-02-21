@@ -2,10 +2,25 @@ app.controller('RegisterController', function(RegisterService, DefaultService, $
     console.log('RegisterController is loaded');
 
 var reg = this;
+reg.showP = true;
 
 reg.removeContact = function(contactPhone){
   RegisterService.removeContact(contactPhone).then(function(){
     console.log('success');
+  });
+}
+
+reg.updateContact = function(){
+  console.log('updating contact');
+  reg.showP = false;
+  reg.showInput = true;
+}
+
+reg.submitUpdate = function(id, name, phone){
+  RegisterService.submitUpdate(id, name, phone).then(function(res){
+    console.log(res);
+    reg.showP = true;
+    reg.showInput = false;
   });
 }
 
@@ -14,6 +29,10 @@ reg.getContactsAndMessage = function(){
     var user = res[0];
     reg.contactsArray = user.emergency;
     reg.message = user.message;
+    reg.contactsArray.forEach(function(i){
+      i.phone = i.phone.slice(2,i.phone.length);
+      i.phone = Number(i.phone);
+    });
   });
 }
 
