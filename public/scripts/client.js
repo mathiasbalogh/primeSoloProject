@@ -77,7 +77,7 @@ app.controller('DefaultController', function(DefaultService, $location){
       responseArray.forEach(function(i){
         var date = new Date(i.date);
         date = date.toISOString().substr(0,10);
-        ctrl.labels.push(date);
+        ctrl.labels.push('');
         ctrl.data[0].push(i.rating);
       });
     });

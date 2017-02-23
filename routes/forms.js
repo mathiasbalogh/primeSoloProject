@@ -10,7 +10,7 @@ var objectId = require('mongoose').Schema.Types.ObjectId;
 
 router.post('/', function (req, res) {
 req.body.userId = req.user.id;
-req.body.date = (new Date).toISOString().substr(0,10);
+req.body.date = new Date();
   var form = new Form(req.body);
   form.save(function(err){
     if(err){
