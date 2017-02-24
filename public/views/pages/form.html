@@ -5,24 +5,31 @@
     <title>Today's Questionnaire</title>
   </head>
   <body>
+    <header class="logoHead">
+      <h1 class="logo">Mind;Space</h1>
+    </header>
       <form>
         <button class="btn btn-danger" ng-click="form.goToHome()"><span class="glyphicon glyphicon-remove"></span></button>
-        <h3>On a scale of 1-10, how do you feel today?</h3>
-        <select ng-model="form.todaysMood">
-          <option value=1>1</option>
-          <option value=2>2</option>
-          <option value=3>3</option>
-          <option value=4>4</option>
-          <option value=5>5</option>
-          <option value=6>6</option>
-          <option value=7>7</option>
-          <option value=8>8</option>
-          <option value=9>9</option>
-          <option value=10>10</option>
-        </select>
-        <h4>Is there anything else you'd like to note about today?</h4>
-        <input type="text-area" ng-model="form.todaysEntry"></input>
-        <button class="btn btn-success" ng-click="form.submitForm()"><span class="glyphicon glyphicon-save"></span></button>
+        <h3 class="col-xs-10 col-xs-offset-1">On a scale of 1-10, how do you feel today?</h3>
+        <div class="col-xs-10 col-xs-offset-1 homeButton">
+          <select ng-model="form.todaysMood" class="form-control">
+            <option value=1>1</option>
+            <option value=2>2</option>
+            <option value=3>3</option>
+            <option value=4>4</option>
+            <option value=5>5</option>
+            <option value=6>6</option>
+            <option value=7>7</option>
+            <option value=8>8</option>
+            <option value=9>9</option>
+            <option value=10>10</option>
+          </select>
+        </div>
+        <h4 class="col-xs-10 col-xs-offset-1">Is there anything else you'd like to note about today?</h4>
+        <div class="col-xs-10 col-xs-offset-1 logo">
+          <textarea class="form-control" rows="3" ng-model="form.todaysEntry"></textarea>
+        </div>
+        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="form.submitForm()"><span class="glyphicon glyphicon-save"></span></button>
       </form>
   </body>
 </html>

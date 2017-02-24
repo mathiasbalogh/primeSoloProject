@@ -7,14 +7,16 @@
   <body>
     <main id="background">
       <header class="logoHead">
-      <h1 class="logo text-center">Mind;Space</h1>
-      </header
-      <p class="text-center">My 10 latest moods</p>
-      <canvas id="line" class="chart chart-line" chart-data="ctrl.data"
-        chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options"
-        chart-dataset-override="ctrl.datasetOverride" chart-click="ctrl.onClick">
-      </canvas>
-      <button class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToForm()">Today's Questionnaire</button>
+        <h1 class="logo">Mind;Space</h1>
+      </header>
+      <div class="backdrop">
+        <p class="text-center">My 10 latest moods</p>
+        <canvas id="line" class="chart chart-line" chart-data="ctrl.data"
+          chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options"
+          chart-dataset-override="ctrl.datasetOverride" chart-click="ctrl.onClick">
+        </canvas>
+      </div>
+      <button class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToForm()">Today's Mood</button>
       <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton"><a href="/graph"><span class="glyphicon glyphicon-stats"></span></a></button>
       <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton"><a href="/search"><span class="glyphicon glyphicon-search"></span></a></button>
       <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton"><a href="/register"><span class="glyphicon glyphicon-cog"></span></a></button>

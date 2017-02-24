@@ -42,6 +42,10 @@ app.controller('FormController', function(FormService, $location){
     FormService.searchForms(searchType, searchQuery).then(function(res){
       console.log('these are the forms your requested', res);
       form.formArray = res.data;
+      form.formArray.forEach(function(i){
+        var date = new Date(i.date);
+        i.date = date.toISOString().substr(0,10);
+      });
     });
   }
 });

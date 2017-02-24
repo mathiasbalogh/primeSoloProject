@@ -1,9 +1,11 @@
 <!-- Consider this the main view -->
-<h1>Mind;Space</h1>
+<header class="logoHead">
+  <h1 class="logo">Mind;Space</h1>
+</header>
 <!-- Shown for users that are NOT logged in -->
 <section ng-hide="auth.loggedIn">
   <!-- I got this button image from Googles sign-in button brand guidelines page -->
-  <a target="_self" href= "/auth/google"><img src="images/btn_google_signin_dark_normal_web.png"/></a>
+  <a class="col-xs-8 col-xs-offset-2"target="_self" href= "/auth/google"><img src="images/btn_google_signin_dark_normal_web.png"/></a>
 </section>
 <!-- Shown for users that are logged in -->
 <section ng-show="auth.loggedIn">

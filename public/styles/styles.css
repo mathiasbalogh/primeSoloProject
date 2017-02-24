@@ -1,15 +1,37 @@
 body {
-  /*background-image:url("../images/mindSpaceBackground.jpg");*/
-  background-color: rgb(0, 196, 231);
+  background-image:url("../images/background.jpg");
+  background-size: 115%;
+  background-repeat: no-repeat;
 }
 .homeButton {
   margin-bottom: 10px;
   margin-top: 10px;
 }
 .logoHead {
-  background-image: url('../images/cloud.png');
-  background-size: cover;
+  /*background-image: url('../images/cloud.png');
+  background-size: cover;*/
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-top: 0;
+  padding-top: 5px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
 }
 .logo {
   padding-bottom: 30px;
+}
+.backdrop {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 20px;
+}
+.searchResults {
+  list-style: none;
+}
+.topMargin {
+  margin-top: 20px;
+}
+.topPadding {
+  padding-top: 20px;
+}
+.bottomPadding {
+  padding-bottom: 40px;
 }

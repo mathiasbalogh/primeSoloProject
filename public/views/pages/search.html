@@ -6,20 +6,33 @@
   </head>
   <body>
     <header><button class="btn btn-info"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button></header>
-      <label for="searchType">What would you like to search by?</label>
-      <select name="searchType" ng-model="form.searchType" ng-change="form.updateType()">
-        <option value="1">Date</option>
-        <option value="2">Keyword</option>
-        <option value="3">Month</option>
-        <option value="4">Rating</option>
-        <option value="5">Timespan</option>
-      </select>
-      <input type="text" ng-model="form.searchQuery" placeholder="{{form.placeHolder}}"></input>
-      <button class="btn btn-primary" ng-click="form.searchForms(form.searchType, form.searchQuery)"><span class="glyphicon glyphicon-search"></span></button>
-      <ul ng-repeat="form in form.formArray">
-        <li>{{form.rating}}</li>
-        <li>{{form.entry}}</li>
-        <li>{{form.date}}</li>
+      <div class="logo">
+        <form>
+          <div class="backdrop">
+            <h4 class="text-center">What would you like to search by?</h4>
+          </div>
+          <div class="col-xs-10 col-xs-offset-1 homeButton">
+            <select class="form-control" name="searchType" ng-model="form.searchType" ng-change="form.updateType()">
+              <option value="1">Date</option>
+              <option value="2">Keyword</option>
+              <option value="3">Month</option>
+              <option value="4">Rating</option>
+              <option value="5">Timespan</option>
+            </select>
+          </div>
+          <div class="col-xs-10 col-xs-offset-1 homeButton">
+            <input class="form-control" type="text" ng-model="form.searchQuery" placeholder="{{form.placeHolder}}"></input>
+          </div>
+          <div class="logo">
+            <button class="btn btn-primary col-xs-8 col-xs-offset-2" ng-click="form.searchForms(form.searchType, form.searchQuery)"><span class="glyphicon glyphicon-search"></span></button>
+          </div>
+        </form>
+      </div>
+
+      <ul class="col-xs-8 col-xs-offset-2 backdrop topMargin" ng-repeat="form in form.formArray">
+        <li class="searchResults">Rating: {{form.rating}}</li>
+        <li class="searchResults">Diary Entry: {{form.entry}}</li>
+        <li class="searchResults">Date: {{form.date}}</li>
       </ul>
 
   </body>

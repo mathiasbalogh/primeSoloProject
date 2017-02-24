@@ -5,27 +5,35 @@
     <title></title>
   </head>
   <body>
-      <button class="btn btn-info"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
-      <form>
-        <label>Add an emergency contact:</label>
+    <header class="logoHead">
+      <h1 class="logo">Mind;Space</h1>
+    </header>
+      <form class="col-xs-10 col-xs-offset-1">
+        <label class="col-xs-10 col-xs-offset-1 text-center backdrop">Add an emergency contact:</label>
         <input type="text" class="form-control" placeholder="Contact Name" ng-model="reg.contactName"></input>
         <input type="number" class="form-control" placeholder="Phone # xxxxxxxxxx" ng-model="reg.contactPhone"></input>
-        <button class="btn btn-success" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)"><span class="glyphicon glyphicon-save"></span></button>
+        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)"><span class="glyphicon glyphicon-save"></span></button>
       </form>
-      <table>
+      <table class="col-xs-10 col-xs-offset-1 backdrop logo">
         <thead>
           <tr>
-            <th>Emergency Contact(s):</th>
+            <th class="backdrop text-center">Emergency Contact(s):</th>
           </tr>
         </thead>
         <tr ng-repeat="contact in reg.contactsArray">
-          <td id="{{contact._id}}"><p ng-show="reg.showP">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary" ng-click="reg.updateContact()"><span class="glyphicon glyphicon-pencil"></span></button><button class="btn btn-danger" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></p>
+          <td id="{{contact._id}}" class="text-center"><p ng-show="reg.showP">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary btn-xs" ng-click="reg.updateContact()"><span class="glyphicon glyphicon-pencil"></span></button>
+            <button class="btn btn-danger btn-xs" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></p>
           <input ng-show="reg.showInput" type="text" ng-model="contact.name"></input><input ng-show="reg.showInput" type="number" ng-model="contact.phone"></input><button ng-show="reg.showInput" class="btn btn-success" ng-click="reg.submitUpdate(contact._id, contact.name, contact.phone)"><span class="glyphicon glyphicon-save"></span></button></td>
         </tr>
       </table>
-      <input name="emergencyMessage" class="form-control" type="text" placeholder="Add or update your message" ng-model="reg.emergencyMessage"></input>
-      <button class="btn btn-success" ng-click="reg.submitMessage(reg.emergencyMessage)"><span class="glyphicon glyphicon-save"></span></button><br>
-      <label for="emergencyMessage">Emergency Message:</label>
-      <p>{{reg.message}}</p>
+      <div class="col-xs-10 col-xs-offset-1 topPadding">
+        <input name="emergencyMessage" class="form-control" type="text" placeholder="Add or update your message" ng-model="reg.emergencyMessage"></input>
+        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="reg.submitMessage(reg.emergencyMessage)"><span class="glyphicon glyphicon-save"></span></button><br>
+      </div>
+      <div class="backdrop text-center">
+        <label class="text-center">Emergency Message:</label>
+        <p class="text-center"><strong>{{reg.message}}</strong></p>
+      </div>
+      <button class="btn btn-info col-xs-8 col-xs-offset-2"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
   </body>
 </html>
