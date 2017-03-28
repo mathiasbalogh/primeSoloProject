@@ -5,4 +5,4 @@
  * @todo Update to match the path of your actual database.
  * @module config/database
  */
-module.exports = 'mongodb://localhost:27017/MindSpace';
+module.exports = 'mongodb://<dbuser>:<dbpassword>@ds159348.mlab.com:59348/heroku_tt2gzn9t';
