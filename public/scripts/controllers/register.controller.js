@@ -4,11 +4,6 @@ app.controller('RegisterController', function(RegisterService, DefaultService, $
 var reg = this;
 reg.showP = true;
 
-reg.removeContact = function(contactPhone){
-  RegisterService.removeContact(contactPhone).then(function(){
-    console.log('success');
-  });
-}
 
 reg.updateContact = function(){
   console.log('updating contact');
@@ -37,6 +32,13 @@ reg.getContactsAndMessage = function(){
 }
 
 reg.getContactsAndMessage();
+
+reg.removeContact = function(contactPhone){
+  RegisterService.removeContact(contactPhone).then(function(){
+    console.log('success');
+    reg.getContactsAndMessage();
+  });
+}
 
 reg.checkRegistration = function(){ //checks if user if fully registered
   return DefaultService.checkRegistration().then(function(res){

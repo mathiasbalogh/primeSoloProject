@@ -103,7 +103,9 @@ router.put('/contactUpdate', function(req, res){ //update an emergency contact
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.delete('/:phone', function(req, res){ //delete an emergency contact
-  User.findByIdAndUpdate(req.user.id, {$pull: {emergency: {"phone": req.params.phone}}},{safe:true, new:true}, function(err, doc){
+  var phone = "+1"+req.params.phone;
+
+  User.findByIdAndUpdate(req.user.id, {$pull: {emergency: {"phone": phone}}},{safe:true, new:true}, function(err, doc){
     if(err){
       console.log(err);
       res.sendStatus(500);

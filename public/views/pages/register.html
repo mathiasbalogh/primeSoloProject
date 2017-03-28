@@ -23,7 +23,7 @@
         <tr ng-repeat="contact in reg.contactsArray">
           <td id="{{contact._id}}" class="text-center"><p ng-show="reg.showP">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary btn-xs" ng-click="reg.updateContact()"><span class="glyphicon glyphicon-pencil"></span></button>
             <button class="btn btn-danger btn-xs" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></p>
-          <input ng-show="reg.showInput" type="text" ng-model="contact.name"></input><input ng-show="reg.showInput" type="number" ng-model="contact.phone"></input><button ng-show="reg.showInput" class="btn btn-success" ng-click="reg.submitUpdate(contact._id, contact.name, contact.phone)"><span class="glyphicon glyphicon-save"></span></button></td>
+            <input ng-show="reg.showInput" type="text" ng-model="contact.name"></input><input ng-show="reg.showInput" type="number" ng-model="contact.phone"></input><button ng-show="reg.showInput" class="btn btn-success" ng-click="reg.submitUpdate(contact._id, contact.name, contact.phone)"><span class="glyphicon glyphicon-save"></span></button></td>
         </tr>
       </table>
       <div class="col-xs-10 col-xs-offset-1 topPadding">

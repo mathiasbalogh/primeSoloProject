@@ -5,7 +5,9 @@
     <title></title>
   </head>
   <body>
-    <header><button class="btn btn-info"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button></header>
+    <header class="logoHead">
+      <h1 class="logo">Mind;Space</h1>
+    </header>
       <div class="logo">
         <form>
           <div class="backdrop">
@@ -24,7 +26,7 @@
             <input class="form-control" type="text" ng-model="form.searchQuery" placeholder="{{form.placeHolder}}"></input>
           </div>
           <div class="logo">
-            <button class="btn btn-primary col-xs-8 col-xs-offset-2" ng-click="form.searchForms(form.searchType, form.searchQuery)"><span class="glyphicon glyphicon-search"></span></button>
+            <button class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton" ng-click="form.searchForms(form.searchType, form.searchQuery)"><span class="glyphicon glyphicon-search"></span></button>
           </div>
         </form>
       </div>
@@ -34,6 +36,6 @@
         <li class="searchResults">Diary Entry: {{form.entry}}</li>
         <li class="searchResults">Date: {{form.date}}</li>
       </ul>
-
+      <button class="btn btn-info col-xs-8 col-xs-offset-2"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
   </body>
 </html>

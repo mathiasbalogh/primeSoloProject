@@ -6,9 +6,8 @@
   </head>
   <body>
     <main>
-      <header><button class="btn btn-info"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button></header>
-      <div class="backdrop">
-        <h1 class="text-center">Your Mind;Space</h1>
+      <div class="logoHead">
+        <h1>Your Mind;Space</h1>
         <canvas id="line" class="chart chart-line" chart-data="graph.data"
           chart-labels="graph.labels" chart-series="graph.series" chart-options="graph.options"
           chart-dataset-override="graph.datasetOverride" chart-click="graph.onClick">
@@ -22,7 +21,8 @@
       <div class="col-xs-10 col-xs-offset-1 homeButton logo">
         <input class="form-control" name="toDate" type="date" ng-model="graph.toDate"></input>
       </div>
-      <button ng-click="graph.refreshGraph(graph.fromDate, graph.toDate)" class="btn btn-primary col-xs-8 col-xs-offset-2"><span class="glyphicon glyphicon-refresh"></span></button>
+      <button ng-click="graph.refreshGraph(graph.fromDate, graph.toDate)" class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton"><span class="glyphicon glyphicon-refresh"></span></button>
+      <button class="btn btn-info col-xs-8 col-xs-offset-2"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
     </main>
   </body>
 </html>
