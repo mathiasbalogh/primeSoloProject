@@ -14,7 +14,7 @@
 var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth2').Strategy;
 /** ---------- REQUIRE CUSTOM APP MODULES ---------- **/
-var config = require('../config/auth');
+// var config = require('../config/auth');
 
 // all db queries moved to a service layer, necessary for proper unit testing
 var UserService = require('../services/user');
@@ -38,9 +38,9 @@ passport.deserializeUser(function (id, done) {
 /** ---------- PASSPORT STRATEGY DEFINITION ---------- **/
 passport.use('google', new GoogleStrategy({
   // identify ourselves to Google and request Google user data
-  clientID: config.googleAuth.clientId,
-  clientSecret: config.googleAuth.clientSecret,
-  callbackURL: config.googleAuth.callbackUrl,
+  clientID: process.ENV.GOOGLE_CLIENT_ID,
+  clientSecret: process.ENV.GOOGLE_CLIENT_SECRET,
+  callbackURL: process.ENV.GOOGLE_CALLBACK_URL,
 }, function (token, refreshToken, profile, done) {
   // Google has responded
 

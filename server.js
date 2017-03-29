@@ -3,7 +3,7 @@ var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 var passport = require('./auth/passport');
-var configs = require('./config/auth');
+// var configs = require('./config/auth');
 var index = require('./routes/index');
 var auth = require('./routes/auth');
 var isLoggedIn = require('./utils/auth');
@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 database();
 
 app.use(session({
-  secret: configs.sessionVars.secret,
+  secret: process.ENV.SESSION_SECRET,
   key: 'user',
   resave: 'true',
   saveUninitialized: false,
