@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 database();
 
 app.use(session({
-  secret: process.ENV.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET,
   key: 'user',
   resave: 'true',
   saveUninitialized: false,
