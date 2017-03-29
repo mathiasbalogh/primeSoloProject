@@ -20,13 +20,13 @@ router.get('/user', function (req, res) { //pull user info
     }, function(err, message) {
         if(message){
           console.log(message.sid);
-          res.sendStatus(204);
         }else{
           console.log(err);
           res.sendStatus(500);
         }
     });
   });
+  res.sendStatus(204);
 });
 
 
