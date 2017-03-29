@@ -1,3 +1,4 @@
+var dotenv = require('dotenv').config({path: './dotenv.env'})
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
