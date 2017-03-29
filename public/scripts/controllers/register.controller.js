@@ -4,6 +4,9 @@ app.controller('RegisterController', function(RegisterService, DefaultService, $
 var reg = this;
 reg.showP = true;
 
+reg.goToHome = function(){
+  $location.path('/home');
+}
 
 reg.updateContact = function(){
   console.log('updating contact');

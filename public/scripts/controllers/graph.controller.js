@@ -4,6 +4,9 @@ app.controller('GraphController', function(DefaultService, $location){
 var graph = this;
 graph.responseArray=[];
 
+graph.goToHome = function(){
+  $location.path('/home');
+}
 
 
 graph.buildRefreshedChart = function(){

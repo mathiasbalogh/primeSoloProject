@@ -45,6 +45,15 @@ app.controller('DefaultController', function(DefaultService, $location){
   ctrl.goToEmergency = function(){
     $location.path('/emergency');
   }
+  ctrl.goToGraph = function(){
+    $location.path('/graph');
+  }
+  ctrl.goToSearch = function(){
+    $location.path('/search');
+  }
+  ctrl.goToRegister = function(){
+    $location.path('/register');
+  }
 
   ctrl.checkRegistration = function(){
     DefaultService.checkRegistration().then(function(res){

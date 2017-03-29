@@ -22,7 +22,7 @@
         <input class="form-control" name="toDate" type="date" ng-model="graph.toDate"></input>
       </div>
       <button ng-click="graph.refreshGraph(graph.fromDate, graph.toDate)" class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton"><span class="glyphicon glyphicon-refresh"></span></button>
-      <button class="btn btn-info col-xs-8 col-xs-offset-2"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
+      <button class="btn btn-info col-xs-8 col-xs-offset-2" ng-click="graph.goToHome()"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
     </main>
   </body>
 </html>

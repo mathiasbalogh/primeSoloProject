@@ -1,6 +1,10 @@
 app.controller('EmergencyController', function($location, $http){
     console.log('EmergencyController is loaded');
 
+    this.goToHome = function(){
+      $location.path('/home');
+    }
+
     this.sendMessage = function(){
       return $http({
         method: 'GET',

@@ -17,9 +17,9 @@
         </canvas>
       </div>
       <button class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToForm()">Today's Mood</button>
-      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton"><a href="/graph"><span class="glyphicon glyphicon-stats"></span></a></button>
-      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton"><a href="/search"><span class="glyphicon glyphicon-search"></span></a></button>
-      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton"><a href="/register"><span class="glyphicon glyphicon-cog"></span></a></button>
+      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToGraph()"><a href="/graph"><span class="glyphicon glyphicon-stats"></span></a></button>
+      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToSearch()"><a href="/search"><span class="glyphicon glyphicon-search"></span></a></button>
+      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToRegister()"><a href="/register"><span class="glyphicon glyphicon-cog"></span></a></button>
 
       <button class="btn btn-danger col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToEmergency()">Emergency!</button>
     </main>
