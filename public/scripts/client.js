@@ -6,31 +6,53 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider, Char
     controller: 'LoginController as login'
   }).when('/register',{
     templateUrl: 'views/pages/register.html',
-    controller: 'RegisterController as reg'
+    controller: 'RegisterController as reg',
+    authRequired: true
   }).when('/home', {
     templateUrl: 'views/pages/home.html',
-    controller: 'DefaultController as ctrl'
+    controller: 'DefaultController as ctrl',
+    authRequired: true
   }).when('/search', {
     templateUrl: 'views/pages/search.html',
-    controller: 'FormController as form'
+    controller: 'FormController as form',
+    authRequired: true
   }).when('/emergency', {
     templateUrl: 'views/pages/emergency.html',
-    controller: 'EmergencyController as emergency'
+    controller: 'EmergencyController as emergency',
+    authRequired: true
   }).when('/form', {
     templateUrl: 'views/pages/form.html',
-    controller: 'FormController as form'
+    controller: 'FormController as form',
+    authRequired: true
   }).when('/update',{
     templateUrl: 'views/pages/update.html',
-    controller: 'RegisterController as reg'
+    controller: 'RegisterController as reg',
+    authRequired: true
   }).when('/graph', {
     templateUrl: 'views/pages/graph.html',
-    controller: 'GraphController as graph'
-  });
+    controller: 'GraphController as graph',
+    authRequired: true
+  }).otherwise({
+    templateUrl: "views/templates/login.html",
+    controller: "LoginController as login"
+  });;
   $locationProvider.html5Mode(true);
   // ChartJsProvider.setOptions({
   //   responsive:false
   // });
 });
+// .run(function($rootScope, $location, $route, AuthFactory) {
+//   $rootScope.$on("$routeChangeStart", function(event, next, current) {
+//     AuthFactory.checkLoggedIn().then(function(loggedIn) {
+//       console.log(loggedIn);
+//       if (next.authRequired && !loggedIn) {
+//         $location.path("/");
+//         $route.reload();
+//       }
+//     });
+//   });
+// });
+
 
 app.controller('LoginController', function(){});
 

@@ -1,4 +1,4 @@
-app.controller('RegisterController', function(RegisterService, DefaultService, $location){
+app.controller('RegisterController', function(RegisterService, DefaultService, $location, $route){
     console.log('RegisterController is loaded');
 
 var reg = this;
@@ -48,9 +48,10 @@ reg.checkRegistration = function(){ //checks if user if fully registered
     var user = res[0];
     var nullCheck = false;
     var contactArray = user.emergency;
+    var message = user.message;
     console.log(contactArray);
     if(contactArray == null){
-      return nullCheck;
+      return {'registered': nullCheck, 'contacts': contactArray, 'message': message};
     }else{
       contactArray.forEach(function(i){
         if(i.name == null || i.phone == null){
@@ -61,24 +62,39 @@ reg.checkRegistration = function(){ //checks if user if fully registered
       });
     }
     if(user.message == null || nullCheck == false){
-      return nullCheck;
+      nullCheck = false;
+      return {'registered': nullCheck, 'contacts': contactArray, 'message': message};
     }else {
       nullCheck = true;
-      return nullCheck;
+      return {'registered': nullCheck, 'contacts': contactArray, 'message': message};
     }
-    return nullCheck;
+    return {'registered': nullCheck, 'contacts': contactArray, 'message': message};
   });
 
 }
+
+reg.newUser = function(){
+  reg.checkRegistration().then(function(res){
+    console.log(res);
+    if (res.contacts.length == 0 && res.message == null){
+      swal('Welcome to Mind;Space', 'To begin, please designate at least one Emergency Contact, and an Emergency Message.');
+    }
+  });
+}
+
+reg.newUser();
 
 reg.submitContact = function(contactName, contactPhone){
   RegisterService.submitContact(contactName, contactPhone).then(function(){
     console.log('success');
       reg.checkRegistration().then(function(res){
-      if(res == true){
+      if(res.registered == true){
         $location.path('/home');
+        swal('Your Info Was Saved!', 'Let us know how you feel with Today\'s Mood', 'success');
       }else {
         console.log('try again');
+        $route.reload();
+        swal('Contact Saved!', 'To continue, please submit an Emergency Message', 'success');
       }
     });
   });
@@ -88,10 +104,13 @@ reg.submitMessage = function(emergencyMessage){
   RegisterService.submitMessage(emergencyMessage).then(function(){
     console.log('success');
       reg.checkRegistration().then(function(res){
-      if(res == true){
+      if(res.registered == true){
         $location.path('/home');
+        swal('Your Info Was Saved!', 'Let us know how you feel with Today\'s Mood', 'success');
       }else {
         console.log('try again');
+        $route.reload();
+        swal('Emergency Message Saved!', 'To continue, please submit an Emergency Contact', 'success');
       }
     });
   });
