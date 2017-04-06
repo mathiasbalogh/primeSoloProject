@@ -10,10 +10,10 @@
         <div class="text-left">
           <h1 class="logo col-xs-8">Mind;Space</h1>
         </div>
-        <button class="btn btn-default col-xs-4" ng-click="ctrl.logOut()"><a href="">Logout <span class="glyphicon glyphicon-log-out"></span></a></button>
+        <button class="btn btn-default col-xs-4 col-sm-1 col-sm-offset-3" ng-click="ctrl.logOut()"><a href="">Logout <span class="glyphicon glyphicon-log-out"></span></a></button>
       </header>
       <div>
-        <div class="backdrop col-xs-12">
+        <div class="backdrop col-xs-12 col-sm-8">
           <p class="text-center">My 10 latest moods</p>
           <canvas id="line" class="chart chart-line" chart-data="ctrl.data"
             chart-labels="ctrl.labels" chart-series="ctrl.series" chart-options="ctrl.options"
@@ -21,12 +21,12 @@
           </canvas>
         </div>
       </div>
-      <button class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToForm()">Today's Mood</button>
-      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToGraph()"><a href="/graph">Bigger Picture <span class="glyphicon glyphicon-stats"></span></a></button>
-      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToSearch()"><a href="/search">Search Moods <span class="glyphicon glyphicon-search"></span></a></button>
-      <button class="btn btn-default col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToRegister()"><a href="/register">Edit Your Info <span class="glyphicon glyphicon-cog"></span></a></button>
+      <button class="btn btn-primary col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-1 homeButton" ng-click="ctrl.goToForm()">Today's Mood</button>
+      <button class="btn btn-default col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-1 homeButton" ng-click="ctrl.goToGraph()"><a href="/graph">Bigger Picture <span class="glyphicon glyphicon-stats"></span></a></button>
+      <button class="btn btn-default col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-1 homeButton" ng-click="ctrl.goToSearch()"><a href="/search">Search Moods <span class="glyphicon glyphicon-search"></span></a></button>
+      <button class="btn btn-default col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-1 homeButton" ng-click="ctrl.goToRegister()"><a href="/register">Edit Your Info <span class="glyphicon glyphicon-cog"></span></a></button>
 
-      <button class="btn btn-danger col-xs-8 col-xs-offset-2 homeButton" ng-click="ctrl.goToEmergency()">Emergency!</button>
+      <button class="btn btn-danger col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-1 homeButton" ng-click="ctrl.goToEmergency()">Emergency!</button>
     </main>
   </body>
 </html>

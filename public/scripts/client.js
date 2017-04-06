@@ -111,7 +111,8 @@ app.controller('DefaultController', function(DefaultService, AuthFactory, $locat
       responseArray = responseArray.reverse();
       responseArray.forEach(function(i){
         var date = new Date(i.date);
-        date = date.toISOString().substr(0,10);
+        // date = date.toISOString().substr(0,10);
+        date = date.toDateString();
         ctrl.labels.push('');
         ctrl.data[0].push(i.rating);
       });
@@ -121,7 +122,7 @@ app.controller('DefaultController', function(DefaultService, AuthFactory, $locat
   ctrl.displayChart= function(){
     ctrl.getChartData();
     ctrl.labels = [];
-    ctrl.series = ['Series A'];
+    ctrl.series = ['My mood'];
     ctrl.data = [
       []
     ];

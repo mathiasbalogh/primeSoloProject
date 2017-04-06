@@ -6,23 +6,25 @@
   </head>
   <body>
     <main>
-      <div class="logoHead">
+      <div class="logoHead col-sm-12">
         <h1>Your Mind;Space</h1>
-        <canvas id="line" class="chart chart-line" chart-data="graph.data"
-          chart-labels="graph.labels" chart-series="graph.series" chart-options="graph.options"
-          chart-dataset-override="graph.datasetOverride" chart-click="graph.onClick">
-        </canvas>
+        <div class="col-sm-8 col-sm-offset-2">
+          <canvas id="line" class="chart chart-line" chart-data="graph.data"
+            chart-labels="graph.labels" chart-series="graph.series" chart-options="graph.options"
+            chart-dataset-override="graph.datasetOverride" chart-click="graph.onClick">
+          </canvas>
+        </div>
       </div>
-      <label class="col-xs-10 col-xs-offset-1" for="fromDate">From:</label>
-      <div class="col-xs-10 col-xs-offset-1 homeButton">
+      <label class="col-xs-10 col-xs-offset-1 col-sm-1 col-sm-offset-2" for="fromDate">From:</label>
+      <div class="col-xs-10 col-xs-offset-1 col-sm-2 col-sm-offset-0 homeButton">
         <input class="form-control" name="fromDate" type="date" ng-model="graph.fromDate"></input>
       </div>
-      <label class="col-xs-10 col-xs-offset-1" for="toDate">To:</label>
-      <div class="col-xs-10 col-xs-offset-1 homeButton">
+      <label class="col-xs-10 col-xs-offset-1 col-sm-1" for="toDate">To:</label>
+      <div class="col-xs-10 col-xs-offset-1 col-sm-2 col-sm-offset-0 homeButton">
         <input class="form-control" name="toDate" type="date" ng-model="graph.toDate"></input>
       </div>
-      <button ng-click="graph.refreshGraph(graph.fromDate, graph.toDate)" class="btn btn-primary col-xs-8 col-xs-offset-2 homeButton"><span class="glyphicon glyphicon-refresh"></span></button>
-      <button class="btn btn-info col-xs-8 col-xs-offset-2" ng-click="graph.goToHome()"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
+      <button ng-click="graph.refreshGraph(graph.fromDate, graph.toDate)" class="btn btn-primary col-xs-8 col-xs-offset-2 col-sm-1 col-sm-offset-0 homeButton"><span class="glyphicon glyphicon-refresh"></span></button>
+      <button class="btn btn-info col-xs-8 col-xs-offset-2 col-sm-2 col-sm-offset-5" ng-click="graph.goToHome()"><a href="/home"><span class="glyphicon glyphicon-home"></span></a></button>
     </main>
   </body>
 </html>
