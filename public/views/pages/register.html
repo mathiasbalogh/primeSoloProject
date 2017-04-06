@@ -12,7 +12,7 @@
         <label class="col-xs-10 col-xs-offset-1 text-center backdrop">Add an emergency contact:</label>
         <input type="text" class="form-control" placeholder="Contact Name" ng-model="reg.contactName"></input>
         <input type="number" class="form-control" placeholder="Phone # 111222333" ng-model="reg.contactPhone"></input>
-        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)">Save contact <span class="glyphicon glyphicon-save"></span></button>
+        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="reg.submitContact(reg.contactName, reg.contactPhone)">Save contact <span class="glyphicon glyphicon-floppy-disk"></span></button>
       </form>
       <table class="col-xs-10 col-xs-offset-1 backdrop logo">
         <thead>
@@ -23,12 +23,12 @@
         <tr ng-repeat="contact in reg.contactsArray">
           <td id="{{contact._id}}" class="text-center"><p ng-show="reg.showP">{{contact.name}}: {{contact.phone}} <button class="btn btn-primary btn-xs" ng-click="reg.updateContact()"><span class="glyphicon glyphicon-pencil"></span></button>
             <button class="btn btn-danger btn-xs" ng-click="reg.removeContact(contact.phone)"><span class="glyphicon glyphicon-remove"></span></button></p>
-            <input ng-show="reg.showInput" type="text" ng-model="contact.name"></input><input ng-show="reg.showInput" type="number" ng-model="contact.phone"></input><button ng-show="reg.showInput" class="btn btn-success" ng-click="reg.submitUpdate(contact._id, contact.name, contact.phone)">Update contact <span class="glyphicon glyphicon-save"></span></button></td>
+            <input ng-show="reg.showInput" type="text" ng-model="contact.name"></input><input ng-show="reg.showInput" type="number" ng-model="contact.phone"></input><button ng-show="reg.showInput" class="btn btn-success" ng-click="reg.submitUpdate(contact._id, contact.name, contact.phone)">Update contact <span class="glyphicon glyphicon-floppy-disk"></span></button></td>
         </tr>
       </table>
       <div class="col-xs-10 col-xs-offset-1 topPadding">
         <input name="emergencyMessage" class="form-control" type="text" placeholder="Add or update your message" ng-model="reg.emergencyMessage"></input>
-        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="reg.submitMessage(reg.emergencyMessage)">Save Message <span class="glyphicon glyphicon-save"></span></button><br>
+        <button class="btn btn-success col-xs-8 col-xs-offset-2 homeButton" ng-click="reg.submitMessage(reg.emergencyMessage)">Save Message <span class="glyphicon glyphicon-floppy-disk"></span></button><br>
       </div>
       <div class="backdrop text-center">
         <label class="text-center">Emergency Message:</label>

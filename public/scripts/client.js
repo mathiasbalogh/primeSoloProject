@@ -35,31 +35,35 @@ app.config(function($routeProvider, $locationProvider, $controllerProvider, Char
   }).otherwise({
     templateUrl: "views/templates/login.html",
     controller: "LoginController as login"
-  });;
+  });
   $locationProvider.html5Mode(true);
-  // ChartJsProvider.setOptions({
-  //   responsive:false
-  // });
 });
-// .run(function($rootScope, $location, $route, AuthFactory) {
-//   $rootScope.$on("$routeChangeStart", function(event, next, current) {
-//     AuthFactory.checkLoggedIn().then(function(loggedIn) {
-//       console.log(loggedIn);
-//       if (next.authRequired && !loggedIn) {
-//         $location.path("/");
-//         $route.reload();
-//       }
-//     });
-//   });
-// });
+
+app.run(function($rootScope, $location, $route, AuthFactory) {
+  $rootScope.$on("$routeChangeStart", function(event, next, current) {
+    AuthFactory.isLoggedIn().then(function(res) {
+      if (next.authRequired && res.data.status == false) {
+        $location.path("/");
+        $route.reload();
+      }
+    });
+  });
+});
+
 
 
 app.controller('LoginController', function(){});
 
-app.controller('DefaultController', function(DefaultService, $location){
+app.controller('DefaultController', function(DefaultService, AuthFactory, $location){
   console.log('DefaultController is loaded');
 
   var ctrl=this;
+
+  ctrl.logOut = function(){
+    AuthFactory.logout().then(function(){
+      $location.path('/')
+    });
+  }
 
   ctrl.goToForm = function(){
     $location.path('/form');
